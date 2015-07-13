@@ -50,11 +50,10 @@
         range-for-ace-first (range 
                              (first sorted-ranks-assume-ace-first) 
                              (inc (last sorted-ranks-assume-ace-first)))]
-    (cond
-      (= sorted-ranks-assume-ace-last range-for-ace-last) true
-      (= sorted-ranks-assume-ace-first range-for-ace-first) true
-      (four-of-a-kind? hand) true
-      :else false)))
+    (or
+      (= sorted-ranks-assume-ace-last range-for-ace-last)
+      (= sorted-ranks-assume-ace-first range-for-ace-first)
+      (four-of-a-kind? hand))))
 
 (defn straight-flush? [hand]
   (and (straight? hand) (flush? hand)))
